@@ -7,9 +7,8 @@ Welcome to my personal portfolio website! This site showcases my work, skills, a
 ## 🛠️ Key Sections
 
 - **About Me**: A brief overview of my background, education, and professional journey.
-- **Education**: Bachelor of Technology (B.Tech) in Metallurgical and Materials Engineering from IIT Patna (2020-2024).
+- **Education**: MS in Applied Machine Learning from University of Maryland College Park.
 - **Projects**: A showcase of my data analysis, machine learning, python programming and Power BI projects, including insights and visualizations I’ve built.
-- **Skills**: A list of my technical and soft skills, highlighting my expertise in Python, SQL, Power BI, and more.
 - **Contact**: Ways to get in touch with me, including links to my social profiles.
 
 ## 🗂️ Projects Highlighted
