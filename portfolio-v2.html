@@ -1,0 +1,1535 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sahil Chaudhari | Portfolio V2</title>
+  <meta name="description" content="Interactive portfolio of Sahil Chaudhari showcasing machine learning, analytics, projects, and experience.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #f4f8f7;
+      --bg-alt: #eef6f4;
+      --surface: #ffffff;
+      --text: #122432;
+      --muted: #5e7280;
+      --accent: #0f766e;
+      --accent-2: #ea580c;
+      --accent-soft: #d8f1ec;
+      --border: #d8e5e2;
+      --shadow: 0 16px 40px rgba(18, 36, 50, 0.08);
+      --radius: 18px;
+      --font-display: "DM Serif Display", Georgia, serif;
+      --font-body: "Sora", "Segoe UI", sans-serif;
+      --container: 1140px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: var(--font-body);
+      color: var(--text);
+      background:
+        radial-gradient(circle at 88% 10%, rgba(234, 88, 12, 0.12), transparent 30%),
+        radial-gradient(circle at 12% 18%, rgba(15, 118, 110, 0.14), transparent 32%),
+        linear-gradient(180deg, #f8fbfa 0%, #f2f7f6 38%, #eef4f3 100%);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    .container {
+      width: min(var(--container), calc(100% - 2.2rem));
+      margin: 0 auto;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      background: rgba(248, 252, 251, 0.88);
+      border-bottom: 1px solid rgba(15, 118, 110, 0.12);
+      backdrop-filter: blur(12px);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      min-height: 72px;
+    }
+
+    .brand {
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      font-size: 0.95rem;
+      white-space: nowrap;
+    }
+
+    .brand strong {
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: 1.22rem;
+    }
+
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      justify-content: center;
+    }
+
+    .nav a {
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 0.42rem 0.72rem;
+      border-radius: 999px;
+      transition: 180ms ease;
+      border: 1px solid transparent;
+    }
+
+    .nav a:hover,
+    .nav a.active {
+      color: var(--accent);
+      border-color: rgba(15, 118, 110, 0.28);
+      background: rgba(15, 118, 110, 0.08);
+    }
+
+    .hero {
+      padding: 4.2rem 0 2.4rem;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(15, 118, 110, 0.1);
+      color: var(--accent);
+      border: 1px solid rgba(15, 118, 110, 0.24);
+      padding: 0.35rem 0.7rem;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    h1, h2, h3 {
+      margin: 0;
+      line-height: 1.2;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+    }
+
+    h1 {
+      margin-top: 0.9rem;
+      font-family: var(--font-display);
+      font-size: clamp(2.2rem, 6vw, 3.5rem);
+      color: #0f2331;
+    }
+
+    .typing {
+      display: inline-block;
+      color: var(--accent-2);
+      border-right: 2px solid rgba(234, 88, 12, 0.7);
+      white-space: nowrap;
+      overflow: hidden;
+      animation: blink 0.8s steps(1) infinite;
+      min-height: 1.25em;
+    }
+
+    @keyframes blink {
+      50% { border-color: transparent; }
+    }
+
+    .hero p {
+      margin: 1.1rem 0 0;
+      color: var(--muted);
+      max-width: 62ch;
+    }
+
+    .hero-actions {
+      margin-top: 1.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.45rem;
+      text-decoration: none;
+      border-radius: 12px;
+      padding: 0.72rem 1rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      border: 1px solid transparent;
+      transition: 180ms ease;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: linear-gradient(95deg, var(--accent), #0c9488);
+      color: #fff;
+      box-shadow: 0 8px 20px rgba(15, 118, 110, 0.3);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 24px rgba(15, 118, 110, 0.35);
+    }
+
+    .btn-outline {
+      border-color: rgba(15, 118, 110, 0.3);
+      color: var(--accent);
+      background: rgba(15, 118, 110, 0.04);
+    }
+
+    .btn-outline:hover {
+      background: rgba(15, 118, 110, 0.09);
+      transform: translateY(-2px);
+    }
+
+    .hero-visual {
+      position: relative;
+      display: grid;
+      place-items: center;
+      min-height: 390px;
+    }
+
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(2px);
+      animation: drift 9s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    .orb.one {
+      width: 220px;
+      height: 220px;
+      background: rgba(15, 118, 110, 0.18);
+      top: 16px;
+      left: 0;
+    }
+
+    .orb.two {
+      width: 170px;
+      height: 170px;
+      background: rgba(234, 88, 12, 0.17);
+      right: 12px;
+      bottom: 26px;
+      animation-delay: -2s;
+    }
+
+    @keyframes drift {
+      0%, 100% { transform: translateY(0) translateX(0); }
+      50% { transform: translateY(-10px) translateX(8px); }
+    }
+
+    .portrait-card {
+      position: relative;
+      width: min(100%, 340px);
+      background: linear-gradient(160deg, #ffffff, #f6fbfa);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 0.8rem;
+      box-shadow: var(--shadow);
+      z-index: 2;
+      transform: rotate(-1.8deg);
+      transition: transform 260ms ease;
+    }
+
+    .portrait-card:hover {
+      transform: rotate(0) translateY(-4px);
+    }
+
+    .portrait-card img {
+      width: 100%;
+      height: 410px;
+      object-fit: cover;
+      object-position: center 10%;
+      border-radius: 14px;
+      display: block;
+    }
+
+    .portrait-badge {
+      position: absolute;
+      right: -14px;
+      bottom: 20px;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 12px 22px rgba(18, 36, 50, 0.12);
+      padding: 0.6rem 0.75rem;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--accent);
+    }
+
+    .section {
+      padding: 2.1rem 0;
+      position: relative;
+    }
+
+    .section-title {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 0.65rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .section-title h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.6rem, 4.3vw, 2.3rem);
+      color: #102634;
+    }
+
+    .section-title p {
+      color: var(--muted);
+      margin: 0;
+      font-size: 0.95rem;
+    }
+
+    .stats-grid {
+      display: grid;
+      gap: 0.9rem;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .stat {
+      background: var(--surface);
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      box-shadow: 0 8px 20px rgba(18, 36, 50, 0.05);
+      padding: 1rem;
+    }
+
+    .stat .value {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #103145;
+      line-height: 1;
+    }
+
+    .stat .label {
+      margin-top: 0.42rem;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .about-panel {
+      background: linear-gradient(180deg, #ffffff 0%, #f8fbfa 100%);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: clamp(1rem, 3vw, 1.4rem);
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: 1.2fr 0.8fr;
+    }
+
+    .about-panel p {
+      margin: 0;
+      color: var(--muted);
+      text-align: justify;
+    }
+
+    .skill-filter {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .chip {
+      border: 1px solid rgba(15, 118, 110, 0.2);
+      background: #fff;
+      color: var(--muted);
+      padding: 0.45rem 0.72rem;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 180ms ease;
+    }
+
+    .chip:hover,
+    .chip.active {
+      border-color: rgba(15, 118, 110, 0.45);
+      background: rgba(15, 118, 110, 0.12);
+      color: var(--accent);
+    }
+
+    .skill-cloud {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+      align-content: start;
+    }
+
+    .skill-pill {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 0.4rem 0.62rem;
+      font-size: 0.8rem;
+      color: #37505f;
+      transition: 180ms ease;
+    }
+
+    .skill-pill.hidden {
+      display: none;
+    }
+
+    .skill-pill:hover {
+      transform: translateY(-2px);
+      border-color: rgba(15, 118, 110, 0.45);
+      color: var(--accent);
+    }
+
+    .timeline-grid {
+      display: grid;
+      gap: 0.9rem;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .timeline-card {
+      background: var(--surface);
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      box-shadow: 0 8px 20px rgba(18, 36, 50, 0.06);
+      padding: 1rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .timeline-card::before {
+      content: "";
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: 4px;
+      background: linear-gradient(180deg, var(--accent), #22a699);
+    }
+
+    .timeline-card h3 {
+      font-size: 1.03rem;
+      color: #133244;
+      margin-bottom: 0.28rem;
+    }
+
+    .timeline-card .meta {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 0.3rem;
+    }
+
+    .timeline-card .desc {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .xp-list {
+      display: grid;
+      gap: 0.8rem;
+    }
+
+    .xp-item {
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: var(--surface);
+      overflow: hidden;
+      box-shadow: 0 8px 20px rgba(18, 36, 50, 0.06);
+    }
+
+    .xp-trigger {
+      width: 100%;
+      background: transparent;
+      border: 0;
+      text-align: left;
+      padding: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.8rem;
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    .xp-role {
+      font-size: 1rem;
+      color: #103246;
+      font-weight: 700;
+      margin: 0;
+    }
+
+    .xp-time {
+      font-size: 0.83rem;
+      color: var(--accent);
+      font-weight: 600;
+      margin-top: 0.2rem;
+    }
+
+    .xp-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 999px;
+      border: 1px solid rgba(15, 118, 110, 0.24);
+      display: grid;
+      place-items: center;
+      color: var(--accent);
+      font-size: 0.95rem;
+      transition: 200ms ease;
+      flex-shrink: 0;
+    }
+
+    .xp-item.open .xp-icon {
+      transform: rotate(45deg);
+      background: rgba(15, 118, 110, 0.08);
+    }
+
+    .xp-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 260ms ease;
+      border-top: 1px solid transparent;
+    }
+
+    .xp-item.open .xp-content {
+      border-top-color: var(--border);
+    }
+
+    .xp-content-inner {
+      padding: 0.85rem 1rem 1rem;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .project-tools {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      margin-bottom: 0.95rem;
+      align-items: center;
+    }
+
+    .search {
+      flex: 1 1 220px;
+      min-width: 180px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 0.64rem 0.72rem;
+      font-family: inherit;
+      font-size: 0.9rem;
+      background: #fff;
+      color: #1a3342;
+    }
+
+    .search:focus {
+      outline: 2px solid rgba(15, 118, 110, 0.22);
+      border-color: rgba(15, 118, 110, 0.4);
+    }
+
+    .project-grid {
+      display: grid;
+      gap: 0.9rem;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .project-card {
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background: #fff;
+      overflow: hidden;
+      box-shadow: 0 10px 24px rgba(18, 36, 50, 0.07);
+      display: grid;
+      grid-template-rows: 210px auto;
+      transition: transform 200ms ease, box-shadow 200ms ease;
+    }
+
+    .project-card.hidden {
+      display: none;
+    }
+
+    .project-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 34px rgba(18, 36, 50, 0.1);
+    }
+
+    .project-thumb {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      background: #edf3f2;
+    }
+
+    .project-body {
+      padding: 0.9rem;
+      display: grid;
+      gap: 0.55rem;
+    }
+
+    .project-body h3 {
+      font-size: 1.02rem;
+      color: #103246;
+    }
+
+    .project-body p {
+      margin: 0;
+      font-size: 0.89rem;
+      color: var(--muted);
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.38rem;
+    }
+
+    .tag {
+      font-size: 0.73rem;
+      font-weight: 700;
+      color: var(--accent);
+      border: 1px solid rgba(15, 118, 110, 0.24);
+      background: rgba(15, 118, 110, 0.08);
+      border-radius: 999px;
+      padding: 0.2rem 0.5rem;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+
+    .project-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+    }
+
+    .link-btn {
+      text-decoration: none;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 0.42rem 0.62rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #164055;
+      background: #fff;
+      transition: 170ms ease;
+      cursor: pointer;
+    }
+
+    .link-btn:hover {
+      border-color: rgba(15, 118, 110, 0.42);
+      color: var(--accent);
+      background: rgba(15, 118, 110, 0.05);
+    }
+
+    .project-empty {
+      color: var(--muted);
+      font-size: 0.9rem;
+      display: none;
+      margin-top: 0.4rem;
+    }
+
+    .contact-box {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: linear-gradient(165deg, #ffffff 0%, #f4faf8 100%);
+      box-shadow: var(--shadow);
+      padding: 1.2rem;
+      display: grid;
+      gap: 0.8rem;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .contact-item {
+      padding: 0.85rem;
+      border: 1px solid rgba(15, 118, 110, 0.18);
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.78);
+    }
+
+    .contact-item .label {
+      display: block;
+      color: var(--muted);
+      font-size: 0.77rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-weight: 700;
+      margin-bottom: 0.24rem;
+    }
+
+    .contact-item a,
+    .contact-item span {
+      color: #113244;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none;
+      word-break: break-word;
+    }
+
+    .social {
+      display: flex;
+      gap: 0.48rem;
+      flex-wrap: wrap;
+    }
+
+    .social a {
+      text-decoration: none;
+      color: var(--accent);
+      border: 1px solid rgba(15, 118, 110, 0.26);
+      background: rgba(15, 118, 110, 0.07);
+      border-radius: 999px;
+      padding: 0.35rem 0.65rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    footer {
+      padding: 2rem 0 2.4rem;
+      color: var(--muted);
+      font-size: 0.86rem;
+      text-align: center;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 500ms ease, transform 500ms ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .top-btn {
+      position: fixed;
+      right: 1rem;
+      bottom: 1rem;
+      border: 1px solid rgba(15, 118, 110, 0.28);
+      background: #fff;
+      color: var(--accent);
+      width: 44px;
+      height: 44px;
+      border-radius: 999px;
+      box-shadow: 0 10px 22px rgba(18, 36, 50, 0.14);
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      font-size: 1.05rem;
+      opacity: 0;
+      visibility: hidden;
+      transition: 180ms ease;
+      z-index: 40;
+    }
+
+    .top-btn.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(18, 36, 50, 0.48);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      z-index: 50;
+    }
+
+    .modal.open {
+      display: flex;
+    }
+
+    .modal-card {
+      width: min(680px, 100%);
+      max-height: 88vh;
+      overflow: auto;
+      background: #fff;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      box-shadow: 0 18px 42px rgba(18, 36, 50, 0.22);
+      padding: 1rem 1rem 1.1rem;
+    }
+
+    .modal-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 0.8rem;
+      align-items: flex-start;
+      margin-bottom: 0.6rem;
+    }
+
+    .modal-title {
+      font-size: 1.2rem;
+      font-family: var(--font-display);
+      color: #123044;
+    }
+
+    .modal-close {
+      border: 1px solid var(--border);
+      background: #fff;
+      color: #415966;
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    .modal-body {
+      color: var(--muted);
+      font-size: 0.9rem;
+      display: grid;
+      gap: 0.75rem;
+    }
+
+    .modal-body ul {
+      margin: 0;
+      padding-left: 1rem;
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .about-panel {
+        grid-template-columns: 1fr;
+      }
+
+      .stats-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .timeline-grid,
+      .project-grid,
+      .contact-box {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 3rem;
+      }
+
+      .portrait-card {
+        width: min(100%, 320px);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .header-inner {
+        padding: 0.35rem 0;
+      }
+
+      .brand {
+        display: none;
+      }
+
+      .nav {
+        width: 100%;
+        justify-content: flex-start;
+        overflow-x: auto;
+        scrollbar-width: none;
+      }
+
+      .nav::-webkit-scrollbar {
+        display: none;
+      }
+
+      .nav a {
+        white-space: nowrap;
+      }
+
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .project-card {
+        grid-template-rows: 195px auto;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#home"><strong>&lt;!-- Sahil Chaudhari --&gt;</strong></a>
+      <nav class="nav" aria-label="Section navigation">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#education">Education</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="home" class="container">
+    <section class="hero reveal">
+      <div class="hero-grid">
+        <div>
+          <span class="kicker">Applied Machine Learning</span>
+          <h1>
+            Hi, I'm Sahil Chaudhari.<br>
+            <span class="typing" id="typing-text" aria-label="Rotating role"></span>
+          </h1>
+          <p>
+            Master of Science in Applied Machine Learning at the University of Maryland, College Park.
+            I build reliable ML and analytics systems that are measurable, practical, and production-minded.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#projects">Explore Projects</a>
+            <a class="btn btn-outline" href="#contact">Get in Touch</a>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <span class="orb one" aria-hidden="true"></span>
+          <span class="orb two" aria-hidden="true"></span>
+          <div class="portrait-card">
+            <img src="images/pic00.jpeg" alt="Portrait of Sahil Chaudhari">
+            <div class="portrait-badge">Data + ML + Product Thinking</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section reveal" aria-label="High-level highlights">
+      <div class="stats-grid" id="stats-grid">
+        <article class="stat">
+          <div class="value" data-target="6" data-suffix="+">0</div>
+          <div class="label">Featured Projects</div>
+        </article>
+        <article class="stat">
+          <div class="value" data-target="3">0</div>
+          <div class="label">Industry Internships</div>
+        </article>
+        <article class="stat">
+          <div class="value" data-target="4.00" data-decimals="2" data-suffix="/4.00">0</div>
+          <div class="label">Current GPA (UMD)</div>
+        </article>
+        <article class="stat">
+          <div class="value" data-target="2025" data-prefix="Since ">0</div>
+          <div class="label">MS Journey Started</div>
+        </article>
+      </div>
+    </section>
+
+    <section id="about" class="section reveal">
+      <div class="section-title">
+        <h2>About Me</h2>
+        <p>Building robust systems from data to deployment</p>
+      </div>
+
+      <div class="about-panel">
+        <div>
+          <p>
+            I am Sahil Chaudhari, a Master's student in Applied Machine Learning at the University of Maryland, College Park,
+            with a strong interest in building reliable and scalable ML systems. My work focuses on taking models beyond experimentation,
+            from data preprocessing and feature engineering to evaluation, optimization, and deployment.
+          </p>
+          <p>
+            I have worked on projects ranging from backtesting quantitative trading strategies to building a fully local
+            Retrieval-Augmented Generation (RAG) system. During internships, I applied geospatial clustering, automated decision systems,
+            and large language models to solve real operational and analytical problems.
+          </p>
+          <p>
+            I enjoy understanding how models behave under the hood, improving them iteratively, and building solutions that balance
+            performance with practical constraints. Outside work, I play guitar and follow anime and manga.
+          </p>
+        </div>
+
+        <aside>
+          <div class="skill-filter" role="tablist" aria-label="Skill category filter">
+            <button class="chip active" data-skill-filter="all" type="button">All</button>
+            <button class="chip" data-skill-filter="ml" type="button">ML</button>
+            <button class="chip" data-skill-filter="data" type="button">Data</button>
+            <button class="chip" data-skill-filter="tools" type="button">Tools</button>
+          </div>
+          <div class="skill-cloud" id="skill-cloud">
+            <span class="skill-pill" data-group="ml">Machine Learning</span>
+            <span class="skill-pill" data-group="ml">Computer Vision</span>
+            <span class="skill-pill" data-group="ml">RAG Systems</span>
+            <span class="skill-pill" data-group="ml">Model Evaluation</span>
+            <span class="skill-pill" data-group="data">Python</span>
+            <span class="skill-pill" data-group="data">SQL</span>
+            <span class="skill-pill" data-group="data">Time Series Analysis</span>
+            <span class="skill-pill" data-group="data">Geospatial Analysis</span>
+            <span class="skill-pill" data-group="tools">Power BI</span>
+            <span class="skill-pill" data-group="tools">Excel</span>
+            <span class="skill-pill" data-group="tools">Streamlit</span>
+            <span class="skill-pill" data-group="tools">Git/GitHub</span>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="education" class="section reveal">
+      <div class="section-title">
+        <h2>Education</h2>
+        <p>Academic background and performance</p>
+      </div>
+
+      <div class="timeline-grid">
+        <article class="timeline-card">
+          <h3>University of Maryland, College Park</h3>
+          <div class="meta">MS in Applied Machine Learning • 2025 - Present</div>
+          <div class="desc">GPA: 4.00/4.00</div>
+        </article>
+
+        <article class="timeline-card">
+          <h3>University of Texas at Austin</h3>
+          <div class="meta">PG Program in AI & Machine Learning • 2024 - 2025</div>
+          <div class="desc">GPA: 4.33/4.33</div>
+        </article>
+
+        <article class="timeline-card">
+          <h3>Indian Institute of Technology, Patna</h3>
+          <div class="meta">B.Tech in Metallurgical and Materials Engineering • 2020 - 2024</div>
+          <div class="desc">CPI: 7.85/10</div>
+        </article>
+
+        <article class="timeline-card">
+          <h3>Maharashtra State Board, Pune</h3>
+          <div class="meta">Higher Secondary Certificate • 2019 - 2020</div>
+          <div class="desc">Percentage: 88.77%</div>
+        </article>
+
+        <article class="timeline-card">
+          <h3>DAV Public School</h3>
+          <div class="meta">Grade 10 (CBSE) • 2017 - 2018</div>
+          <div class="desc">Percentage: 93%</div>
+        </article>
+      </div>
+    </section>
+
+    <section id="experience" class="section reveal">
+      <div class="section-title">
+        <h2>Experience</h2>
+        <p>Click each role to expand details</p>
+      </div>
+
+      <div class="xp-list" id="xp-list">
+        <article class="xp-item open">
+          <button class="xp-trigger" type="button" aria-expanded="true">
+            <div>
+              <h3 class="xp-role">Data Analyst • Insight Fusion Analytics</h3>
+              <div class="xp-time">February 2025 - June 2025</div>
+            </div>
+            <span class="xp-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="xp-content" style="max-height: 320px;">
+            <div class="xp-content-inner">
+              Applied geospatial analysis, automation, and machine learning to transform complex datasets into clear,
+              decision-ready insights across stock market analysis, sports analytics, social media, and environmental studies.
+            </div>
+          </div>
+        </article>
+
+        <article class="xp-item">
+          <button class="xp-trigger" type="button" aria-expanded="false">
+            <div>
+              <h3 class="xp-role">Operational Analyst • Pinnacle Enterprises</h3>
+              <div class="xp-time">June 2024 - November 2024</div>
+            </div>
+            <span class="xp-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="xp-content">
+            <div class="xp-content-inner">
+              Improved operational decisions through dashboard-led analysis for inventory efficiency, customer retention,
+              and financial health monitoring. Connected NPS and receivables trends to practical business actions.
+            </div>
+          </div>
+        </article>
+
+        <article class="xp-item">
+          <button class="xp-trigger" type="button" aria-expanded="false">
+            <div>
+              <h3 class="xp-role">Data Analyst • Tailor and Circus</h3>
+              <div class="xp-time">December 2022 - March 2023</div>
+            </div>
+            <span class="xp-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="xp-content">
+            <div class="xp-content-inner">
+              Analyzed retention, CLTV, transaction value, and regional sales patterns. Built customer segmentation and
+              discount-behavior insights to support product and growth strategy decisions.
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="projects" class="section reveal">
+      <div class="section-title">
+        <h2>Projects</h2>
+        <p>Filter by type or search by keyword</p>
+      </div>
+
+      <div class="project-tools">
+        <input id="project-search" class="search" type="search" placeholder="Search projects (e.g., RAG, dashboard, forecasting)">
+        <button class="chip active" data-project-filter="all" type="button">All</button>
+        <button class="chip" data-project-filter="ml" type="button">ML</button>
+        <button class="chip" data-project-filter="analytics" type="button">Analytics</button>
+        <button class="chip" data-project-filter="dashboard" type="button">Dashboard</button>
+        <button class="chip" data-project-filter="automation" type="button">Automation</button>
+      </div>
+
+      <div class="project-grid" id="project-grid">
+        <article class="project-card" data-category="ml" data-search="medical assistant rag retrieval augmented generation llm clinical">
+          <img class="project-thumb" src="images/pic12.jpeg" alt="Medical assistant RAG project screenshot">
+          <div class="project-body">
+            <h3>Medical Assistant (RAG-based)</h3>
+            <p>Clinical Q&A assistant grounded in trusted documents, compared against an LLM-only baseline for reliability.</p>
+            <div class="tags">
+              <span class="tag">ML</span>
+              <span class="tag">RAG</span>
+              <span class="tag">NLP</span>
+            </div>
+            <div class="project-actions">
+              <a class="link-btn" href="https://github.com/Lord2709/RAG/tree/main/Medical%20Assistant" target="_blank" rel="noreferrer">GitHub</a>
+              <button class="link-btn details-btn" type="button" data-project-id="medical-assistant">Details</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card" data-category="ml" data-search="helmet classification computer vision cnn vgg16 safety">
+          <img class="project-thumb" src="images/pic13.jpeg" alt="Helmet image classification project">
+          <div class="project-body">
+            <h3>HelNet Image Classification</h3>
+            <p>Helmet compliance detection with CNN and transfer learning (VGG16), focused on robust real-world performance.</p>
+            <div class="tags">
+              <span class="tag">ML</span>
+              <span class="tag">Computer Vision</span>
+            </div>
+            <div class="project-actions">
+              <a class="link-btn" href="https://github.com/Lord2709/Computer-Vision/tree/main/HelmNet%20Image%20Classification" target="_blank" rel="noreferrer">GitHub</a>
+              <button class="link-btn details-btn" type="button" data-project-id="helnet">Details</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card" data-category="analytics" data-search="octant analysis streamlit web app batch processing">
+          <img class="project-thumb" src="images/pic11.jpg" alt="Octant analysis web app preview">
+          <div class="project-body">
+            <h3>Octant Analysis (Streamlit)</h3>
+            <p>Single-input and batch octant analysis workflows with web-based visualization and export-ready outputs.</p>
+            <div class="tags">
+              <span class="tag">Analytics</span>
+              <span class="tag">Web App</span>
+            </div>
+            <div class="project-actions">
+              <a class="link-btn" href="https://lord2709-my-project-octant-analysisoctant-bld9es.streamlit.app/" target="_blank" rel="noreferrer">Live App</a>
+              <a class="link-btn" href="https://github.com/Lord2709/My-Project/tree/main/Octant_Analysis" target="_blank" rel="noreferrer">GitHub</a>
+              <button class="link-btn details-btn" type="button" data-project-id="octant">Details</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card" data-category="analytics" data-search="bitcoin time series forecasting arima vwap ema sma finance">
+          <img class="project-thumb" src="https://raw.githubusercontent.com/Lord2709/My-Project/main/Bitcoin/Graphs_PPTX/theme.jpeg" alt="Bitcoin time series forecasting visual">
+          <div class="project-body">
+            <h3>Bitcoin Time Series Forecasting</h3>
+            <p>Team project forecasting Bitcoin prices using ARIMA and financial indicators such as VWAP, EMA, and SMA.</p>
+            <div class="tags">
+              <span class="tag">Time Series</span>
+              <span class="tag">Finance</span>
+            </div>
+            <div class="project-actions">
+              <a class="link-btn" href="https://github.com/Lord2709/My-Project/blob/main/Bitcoin/Bitcoin%20Slides.pdf" target="_blank" rel="noreferrer">Slides</a>
+              <a class="link-btn" href="https://github.com/Lord2709/My-Project/tree/main/Bitcoin" target="_blank" rel="noreferrer">GitHub</a>
+              <button class="link-btn details-btn" type="button" data-project-id="bitcoin">Details</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card" data-category="dashboard" data-search="ipl scorecard dashboard power bi web scraping cricket">
+          <img class="project-thumb" src="https://raw.githubusercontent.com/Lord2709/PowerBI_Projects/main/IPL%20Scorecard%20Dashboard/images/IPL_Front_Page.jpg" alt="IPL scorecard dashboard preview">
+          <div class="project-body">
+            <h3>IPL Scorecard Dashboard</h3>
+            <p>Power BI dashboard with web-scraped IPL data to analyze team performance, bowlers, and match-level patterns.</p>
+            <div class="tags">
+              <span class="tag">Power BI</span>
+              <span class="tag">Dashboard</span>
+            </div>
+            <div class="project-actions">
+              <a class="link-btn" href="https://github.com/Lord2709/PowerBI_Projects/tree/main/IPL%20Scorecard%20Dashboard" target="_blank" rel="noreferrer">GitHub</a>
+              <button class="link-btn details-btn" type="button" data-project-id="ipl">Details</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card" data-category="automation" data-search="transcript generator csv pdf python automation batch">
+          <img class="project-thumb" src="https://raw.githubusercontent.com/Lord2709/Transcript-and-Marksheet-Generator/main/Transcript%20Generator/theme.jpg" alt="Transcript generator project preview">
+          <div class="project-body">
+            <h3>Transcript Generator</h3>
+            <p>Python automation pipeline that processes multiple CSV datasets and generates PDF transcripts at scale.</p>
+            <div class="tags">
+              <span class="tag">Automation</span>
+              <span class="tag">Python</span>
+            </div>
+            <div class="project-actions">
+              <a class="link-btn" href="https://github.com/Lord2709/Transcript-and-Marksheet-Generator/tree/main/Transcript%20Generator" target="_blank" rel="noreferrer">GitHub</a>
+              <button class="link-btn details-btn" type="button" data-project-id="transcript">Details</button>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="project-empty" id="project-empty">No projects match the selected filter/search.</div>
+    </section>
+
+    <section id="contact" class="section reveal">
+      <div class="section-title">
+        <h2>Get in Touch</h2>
+        <p>Open to collaborations, research, and ML engineering opportunities</p>
+      </div>
+
+      <div class="contact-box">
+        <div class="contact-item">
+          <span class="label">Email</span>
+          <a href="mailto:sahilchaudhari0927@gmail.com">sahilchaudhari0927@gmail.com</a>
+        </div>
+        <div class="contact-item">
+          <span class="label">Phone</span>
+          <a href="tel:+12408866730">+1 (240) 886-6730</a>
+        </div>
+        <div class="contact-item">
+          <span class="label">Profiles</span>
+          <div class="social">
+            <a href="https://github.com/Lord2709" target="_blank" rel="noreferrer">GitHub</a>
+            <a href="https://www.linkedin.com/in/sahil-chaudhari-264210164/" target="_blank" rel="noreferrer">LinkedIn</a>
+            <a href="https://www.instagram.com/sahil0927?igsh=NTk5Y2VuM2h5ZDRx&utm_source=qr" target="_blank" rel="noreferrer">Instagram</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">Portfolio V2 built from your existing content • Sahil Chaudhari</div>
+  </footer>
+
+  <button class="top-btn" id="top-btn" aria-label="Scroll to top">↑</button>
+
+  <div class="modal" id="project-modal" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="modal-card">
+      <div class="modal-head">
+        <h3 class="modal-title" id="modal-title"></h3>
+        <button class="modal-close" id="modal-close" type="button" aria-label="Close details">×</button>
+      </div>
+      <div class="modal-body" id="modal-body"></div>
+    </div>
+  </div>
+
+  <script>
+    const typingPhrases = [
+      "ML Engineer in Training",
+      "Data Analyst",
+      "RAG Systems Builder",
+      "Analytics Storyteller"
+    ];
+
+    const typingEl = document.getElementById("typing-text");
+    let phraseIndex = 0;
+    let charIndex = 0;
+    let deleting = false;
+
+    function typeLoop() {
+      const current = typingPhrases[phraseIndex];
+      if (!deleting) {
+        charIndex += 1;
+        typingEl.textContent = current.slice(0, charIndex);
+        if (charIndex === current.length) {
+          deleting = true;
+          setTimeout(typeLoop, 1100);
+          return;
+        }
+      } else {
+        charIndex -= 1;
+        typingEl.textContent = current.slice(0, charIndex);
+        if (charIndex === 0) {
+          deleting = false;
+          phraseIndex = (phraseIndex + 1) % typingPhrases.length;
+        }
+      }
+      setTimeout(typeLoop, deleting ? 45 : 80);
+    }
+
+    typeLoop();
+
+    const revealEls = document.querySelectorAll(".reveal");
+    const revealObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.14 }
+    );
+    revealEls.forEach((el) => revealObserver.observe(el));
+
+    let statsAnimated = false;
+    const statsGrid = document.getElementById("stats-grid");
+
+    const statsObserver = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting && !statsAnimated) {
+          statsAnimated = true;
+          document.querySelectorAll(".stat .value").forEach((node) => {
+            const target = parseFloat(node.dataset.target || "0");
+            const decimals = Number(node.dataset.decimals || 0);
+            const suffix = node.dataset.suffix || "";
+            const prefix = node.dataset.prefix || "";
+            const duration = 1200;
+            const start = performance.now();
+
+            function animate(now) {
+              const progress = Math.min((now - start) / duration, 1);
+              const eased = 1 - Math.pow(1 - progress, 3);
+              const value = target * eased;
+              const formatted = decimals > 0 ? value.toFixed(decimals) : Math.round(value).toString();
+              node.textContent = `${prefix}${formatted}${suffix}`;
+              if (progress < 1) requestAnimationFrame(animate);
+            }
+
+            requestAnimationFrame(animate);
+          });
+        }
+      },
+      { threshold: 0.4 }
+    );
+
+    statsObserver.observe(statsGrid);
+
+    document.querySelectorAll(".xp-item").forEach((item) => {
+      const button = item.querySelector(".xp-trigger");
+      const content = item.querySelector(".xp-content");
+      button.addEventListener("click", () => {
+        const isOpen = item.classList.contains("open");
+        document.querySelectorAll(".xp-item").forEach((other) => {
+          other.classList.remove("open");
+          other.querySelector(".xp-trigger").setAttribute("aria-expanded", "false");
+          other.querySelector(".xp-content").style.maxHeight = "0px";
+        });
+
+        if (!isOpen) {
+          item.classList.add("open");
+          button.setAttribute("aria-expanded", "true");
+          content.style.maxHeight = `${content.scrollHeight + 10}px`;
+        }
+      });
+    });
+
+    const skillFilterButtons = document.querySelectorAll("[data-skill-filter]");
+    const skillPills = document.querySelectorAll(".skill-pill");
+
+    skillFilterButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        skillFilterButtons.forEach((b) => b.classList.remove("active"));
+        button.classList.add("active");
+        const filter = button.dataset.skillFilter;
+
+        skillPills.forEach((pill) => {
+          if (filter === "all" || pill.dataset.group === filter) {
+            pill.classList.remove("hidden");
+          } else {
+            pill.classList.add("hidden");
+          }
+        });
+      });
+    });
+
+    const projectSearch = document.getElementById("project-search");
+    const projectCards = document.querySelectorAll(".project-card");
+    const projectFilterButtons = document.querySelectorAll("[data-project-filter]");
+    const projectEmpty = document.getElementById("project-empty");
+    let activeProjectFilter = "all";
+
+    function runProjectFilter() {
+      const query = projectSearch.value.trim().toLowerCase();
+      let visibleCount = 0;
+
+      projectCards.forEach((card) => {
+        const category = card.dataset.category;
+        const haystack = card.dataset.search;
+        const matchesCategory = activeProjectFilter === "all" || category === activeProjectFilter;
+        const matchesQuery = haystack.includes(query);
+        const show = matchesCategory && matchesQuery;
+        card.classList.toggle("hidden", !show);
+        if (show) visibleCount += 1;
+      });
+
+      projectEmpty.style.display = visibleCount === 0 ? "block" : "none";
+    }
+
+    projectSearch.addEventListener("input", runProjectFilter);
+    projectFilterButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        projectFilterButtons.forEach((b) => b.classList.remove("active"));
+        button.classList.add("active");
+        activeProjectFilter = button.dataset.projectFilter;
+        runProjectFilter();
+      });
+    });
+
+    runProjectFilter();
+
+    const projectDetails = {
+      "medical-assistant": {
+        title: "Medical Assistant (RAG-based)",
+        body: [
+          "Built a medical assistant that answers clinical queries using trusted references instead of relying only on parametric memory.",
+          "Compared responses with a baseline LLM-only workflow to evaluate medical grounding and consistency.",
+          "Focus: retrieval quality, response accuracy, and safer behavior for high-stakes questions."
+        ]
+      },
+      helnet: {
+        title: "HelNet Image Classification",
+        body: [
+          "End-to-end workplace safety classifier for helmet compliance from worker images.",
+          "Used CNN pipelines, transfer learning with VGG16, and augmentation for stronger generalization.",
+          "Focus: practical reliability under varied visual conditions."
+        ]
+      },
+      octant: {
+        title: "Octant Analysis (Streamlit)",
+        body: [
+          "Developed web workflows for both single-file and batch octant analysis use cases.",
+          "Designed for rapid use in assignment and data-processing scenarios with visual summaries.",
+          "Focus: usability and reproducible output generation."
+        ]
+      },
+      bitcoin: {
+        title: "Bitcoin Time Series Forecasting",
+        body: [
+          "Team project using ARIMA and engineered indicators (VWAP, EMA, SMA) for forecasting.",
+          "Compared signal behavior and forecasting quality under financial time-series constraints.",
+          "Focus: feature design, model selection, and interpretation of price dynamics."
+        ]
+      },
+      ipl: {
+        title: "IPL Scorecard Dashboard",
+        body: [
+          "Built a Power BI dashboard fed by scraped scorecard data from IPL matches.",
+          "Analyzed team performance, bowler trends, and match-level patterns through interactive visuals.",
+          "Focus: translating raw sports data into decision-friendly dashboards."
+        ]
+      },
+      transcript: {
+        title: "Transcript Generator",
+        body: [
+          "Automated transcript generation by processing multiple student/course CSV files in Python.",
+          "Produced individualized PDFs with batch processing for larger cohorts.",
+          "Focus: reliability, correctness, and time savings in document workflows."
+        ]
+      }
+    };
+
+    const modal = document.getElementById("project-modal");
+    const modalTitle = document.getElementById("modal-title");
+    const modalBody = document.getElementById("modal-body");
+    const modalClose = document.getElementById("modal-close");
+
+    function closeModal() {
+      modal.classList.remove("open");
+      modal.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+    }
+
+    document.querySelectorAll(".details-btn").forEach((button) => {
+      button.addEventListener("click", () => {
+        const id = button.dataset.projectId;
+        const details = projectDetails[id];
+        if (!details) return;
+
+        modalTitle.textContent = details.title;
+        modalBody.innerHTML = `<ul>${details.body.map((line) => `<li>${line}</li>`).join("")}</ul>`;
+        modal.classList.add("open");
+        modal.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden";
+      });
+    });
+
+    modalClose.addEventListener("click", closeModal);
+    modal.addEventListener("click", (event) => {
+      if (event.target === modal) closeModal();
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && modal.classList.contains("open")) closeModal();
+    });
+
+    const topBtn = document.getElementById("top-btn");
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 500) {
+        topBtn.classList.add("show");
+      } else {
+        topBtn.classList.remove("show");
+      }
+    });
+    topBtn.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+
+    const navLinks = document.querySelectorAll(".nav a");
+    const sections = [...navLinks]
+      .map((link) => document.querySelector(link.getAttribute("href")))
+      .filter(Boolean);
+
+    const navObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            navLinks.forEach((link) => {
+              const href = link.getAttribute("href");
+              link.classList.toggle("active", href === `#${entry.target.id}`);
+            });
+          }
+        });
+      },
+      { threshold: 0.45 }
+    );
+
+    sections.forEach((section) => navObserver.observe(section));
+  </script>
+</body>
+</html>
