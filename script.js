@@ -382,6 +382,38 @@ const projectDetails = {
       "Generated individualized, structured PDF outputs.",
       "Focus: data validation and automation correctness at scale."
     ]
+  },
+  multicam: {
+    title: "Multi-Camera CV System",
+    lines: [
+      "Built a synchronized multi-camera pipeline for object tracking across overlapping fields of view.",
+      "Handled cross-camera re-identification and frame alignment challenges.",
+      "Focus: robust detection continuity and real-time multi-feed inference."
+    ]
+  },
+  ragconvex: {
+    title: "RAG + Convex Optimization",
+    lines: [
+      "Integrated convex optimization techniques into a RAG retrieval pipeline to improve document ranking.",
+      "Experimented with embedding space regularization and query-passage alignment objectives.",
+      "Focus: principled retrieval quality improvements grounded in optimization theory."
+    ]
+  },
+  whitehat: {
+    title: "WhiteHat",
+    lines: [
+      "Developed an automated toolkit for ethical hacking and security reconnaissance workflows.",
+      "Implemented modular scanners for vulnerability assessment and enumeration.",
+      "Focus: reproducible, auditable security automation for authorized testing."
+    ]
+  },
+  animerag: {
+    title: "AnimeRAG",
+    lines: [
+      "Built a RAG-based anime recommendation and Q&A system over curated metadata and synopses.",
+      "Indexed embeddings across titles, genres, and review corpora for semantic retrieval.",
+      "Focus: domain-specific retrieval with conversational interface for anime discovery."
+    ]
   }
 };
 
